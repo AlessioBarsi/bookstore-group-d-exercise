@@ -31,6 +31,7 @@ body {
     cursor: pointer;
     text-decoration: none;
     transition: 0.3s ease;
+    text-align: center;
 }
 
 .nav-button:hover {
@@ -184,4 +185,28 @@ footer {
 
 footer h3 {
     margin: 0;
+}
+
+/* responsive rules */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .navbar {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 0.1rem;
+    }
+
+    .nav-button {
+        padding: 0.2rem;
+    }
 }
