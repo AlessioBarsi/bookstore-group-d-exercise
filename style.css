@@ -1,0 +1,95 @@
+/* Defining variables */
+:root {
+    --ink: black;
+    --bg: rgb(252, 240, 218);
+    --primary: rgb(174, 172, 120);
+    --secondary: rgb(242, 196, 106);
+    --dark: rgb(76, 69, 65);
+}
+
+/* Applying variables */
+body {
+    color: var(--ink);
+    background-color: var(--bg);
+}
+
+/* Header */
+header {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--primary);
+    padding: 3px;
+}
+
+header>div {
+    font-weight: bold;
+}
+
+/* <h1> title */
+.title-group {
+    margin-bottom: 5px
+}
+
+.title-group h1 {
+    margin: 5px;
+}
+
+.title > span {
+    color: var(--primary);
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--dark);
+}
+
+/* product sections and cards */
+.section-staff, .section-fiction, .section-nonfiction {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--primary);
+    border-radius: 10px;
+}
+
+.section-name {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.popular-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4rem;
+}
+
+.product-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 1rem;
+    border-radius: 5%;
+    border: solid 3px var(--secondary)
+}
+
+.product-card img {
+    border-radius: 2%;
+    max-width: 100%;
+    height: 300px;
+    object-fit: contain;
+    display: block;
+}
+
+.product-card p {
+    margin: 4px
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-author {
+    font-style: italic;
+}
