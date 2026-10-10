@@ -1,4 +1,11 @@
-/* Defining variables */
+/* border box */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* defining variables */
 :root {
     --ink: black;
     --bg: rgb(252, 240, 218);
@@ -7,19 +14,65 @@
     --dark: rgb(76, 69, 65);
 }
 
-/* Applying variables */
+/* applying variables */
 body {
     color: var(--ink);
     background-color: var(--bg);
 }
 
-/* Header */
+/* buttons */
+
+.nav-button {
+    background-color: var(--dark);
+    padding: 0.5rem;
+    color: var(--secondary);
+    border-radius: 5px;
+    font-size: medium;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.nav-button:hover {
+    filter: brightness(1.2);
+}
+
+button {
+    background-color: var(--dark);
+    padding: 0.75rem;
+    color: var(--secondary);
+    border-radius: 5px;
+    font-size: medium;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: var(--primary);
+    color: var(--ink)
+}
+
+/* header and navbar */
 header {
+    background-color: var(--bg);
+    top: 0;
     position: sticky;
     display: flex;
     justify-content: space-between;
     border-bottom: 3px solid var(--primary);
     padding: 3px;
+    z-index: 10;
+    align-items: center;
+}
+
+header h3 {
+    margin: 0;
+}
+
+.navbar {
+    padding: 0.5rem;
 }
 
 header>div {
@@ -35,7 +88,8 @@ header>div {
     margin: 5px;
 }
 
-.title > span {
+.title>span,
+.logo>span {
     color: var(--primary);
 }
 
@@ -47,7 +101,9 @@ header>div {
 }
 
 /* product sections and cards */
-.section-staff, .section-fiction, .section-nonfiction {
+.section-staff,
+.section-fiction,
+.section-nonfiction {
     margin-top: 1rem;
     padding: 1rem;
     background-color: var(--primary);
@@ -59,7 +115,7 @@ header>div {
     margin-top: 0;
 }
 
-.popular-grid {
+.product-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 4rem;
@@ -92,4 +148,40 @@ header>div {
 
 .card-author {
     font-style: italic;
+}
+
+/* events */
+
+.events {
+    margin-block: 5px;
+    background-color: var(--secondary);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.events h2 {
+    margin: 0;
+}
+
+.bookclubs-title {
+    font-style: italic;
+}
+
+.events-grid {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 2fr 2fr;
+}
+
+/* footer */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+footer h3 {
+    margin: 0;
 }
