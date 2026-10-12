@@ -52,7 +52,7 @@ button {
 
 button:hover {
     background-color: var(--primary);
-    color: var(--ink)
+    color: var(--ink);
 }
 
 /* header and navbar */
@@ -80,13 +80,32 @@ header>div {
     font-weight: bold;
 }
 
-/* <h1> title */
-.title-group {
-    margin-bottom: 5px
+/* hero and <h1> title */
+.hero {
+    margin-top: 3px;
+    background-image: url('./images/home/home-image.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 40vh;
+    max-width: 70vh;
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
 }
 
-.title-group h1 {
-    margin: 5px;
+.hero-content {
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: color-mix(in srgb, var(--secondary) 85%, transparent);
+}
+
+.hero-content h1 {
+    margin: 0;
 }
 
 .title>span,
@@ -123,6 +142,7 @@ header>div {
 }
 
 .product-card {
+
     display: flex;
     align-items: center;
     flex-direction: column;
