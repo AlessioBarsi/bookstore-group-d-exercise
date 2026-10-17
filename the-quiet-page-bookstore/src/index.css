@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+:root {
+    --ink: black;
+    --bg: rgb(252, 240, 218);
+    --primary: rgb(174, 172, 120);
+    --secondary: rgb(242, 196, 106);
+    --dark: rgb(76, 69, 65);
+}
+
+@theme {
+    --color-ink: var(--ink);
+    --color-bg: var(--bg);
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-dark: var(--dark);
+}
+
+.nav-button {
+    @apply bg-dark text-secondary px-2 py-1 font-bold rounded cursor-pointer hover:brightness-110 transition;
+}
