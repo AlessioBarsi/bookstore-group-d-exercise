@@ -16,6 +16,6 @@
     --color-dark: var(--dark);
 }
 
-.nav-button, .hamburger-button {
+.nav-button, .hamburger-button, .hero-button {
     @apply bg-dark text-secondary px-2 py-1 font-bold rounded cursor-pointer hover:brightness-110 transition;
 }
