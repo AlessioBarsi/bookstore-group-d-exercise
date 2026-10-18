@@ -1,3 +1,5 @@
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+
 function ProductCard({
     image,
     title,
@@ -22,13 +24,14 @@ function ProductCard({
                 {description}
             </p>
 
-            <div className="flex gap-2 mt-auto w-full pt-2">
+            <div className="flex justify-center items-center gap-2 mt-auto w-full pt-2">
                 <button className="primary-button">
                     Add To Cart
                 </button>
                 <button className="secondary-button">
                     Reviews
                 </button>
+                <FavoriteButton />
             </div>
 
         </div>

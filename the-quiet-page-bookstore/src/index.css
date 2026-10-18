@@ -23,9 +23,9 @@
 }
 
 .primary-button {
-    @apply flex-1 bg-dark text-secondary rounded p-2 cursor-pointer font-bold transition hover:bg-ink text-sm;
+    @apply bg-dark text-secondary rounded p-2 cursor-pointer font-bold transition hover:bg-ink text-sm;
 }
 
 .secondary-button {
-    @apply flex-1 bg-secondary text-dark rounded p-2 cursor-pointer font-bold transition hover:brightness-110 text-sm;
+    @apply bg-secondary text-dark rounded p-2 cursor-pointer font-bold transition hover:brightness-110 text-sm;
 }

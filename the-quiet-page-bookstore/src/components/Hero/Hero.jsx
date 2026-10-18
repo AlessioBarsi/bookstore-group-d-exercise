@@ -18,8 +18,8 @@ function Hero() {
           <h1 className="text-4xl md:text-6xl font-bold text-ink mb-1">
             The <span className="text-primary">Quiet</span> Page
           </h1>
-          <div className="italic md:text-2xl text-dark mb-1">Independent Bookstore</div>
-          <div className="text-ink/80 md:text-xl mb-4">Lost in a book? We'll help you stay there</div>
+          <div className="italic md:text-2xl font-bold text-dark mb-1">Independent Bookstore</div>
+          <div className="text-ink/80 md:text-xl font-semibold mb-4">Lost in a book? We'll help you stay there</div>
 
           <div className="flex gap-3 mb-4">
             <button className="primary-button">Online Store</button>
