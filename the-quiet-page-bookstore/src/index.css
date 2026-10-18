@@ -16,6 +16,16 @@
     --color-dark: var(--dark);
 }
 
-.nav-button, .hamburger-button, .hero-button {
+.nav-button,
+.hamburger-button,
+.hero-button {
     @apply bg-dark text-secondary px-2 py-1 font-bold rounded cursor-pointer hover:brightness-110 transition;
+}
+
+.primary-button {
+    @apply flex-1 bg-dark text-secondary rounded p-2 cursor-pointer font-bold transition hover:bg-ink text-sm;
+}
+
+.secondary-button {
+    @apply flex-1 bg-secondary text-dark rounded p-2 cursor-pointer font-bold transition hover:brightness-110 text-sm;
 }

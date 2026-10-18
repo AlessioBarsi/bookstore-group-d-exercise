@@ -6,7 +6,7 @@ function ProductCard({
     description
 }) {
     return (
-        <div className="bg-bg rounded-lg border-2 border-secondary p-2 flex flex-col items-center text-center gap-2">
+        <div className="bg-primary/30 rounded-lg border-2 border-secondary p-2 flex flex-col items-center text-center gap-2">
 
             <img
                 src={`/images/book-covers/${image}`}
@@ -23,10 +23,10 @@ function ProductCard({
             </p>
 
             <div className="flex gap-2 mt-auto w-full pt-2">
-                <button className="flex-1 bg-dark text-secondary rounded py-2 px-6 cursor-pointer font-bold transition hover:bg-ink text-sm">
+                <button className="primary-button">
                     Add To Cart
                 </button>
-                <button className="flex-1 bg-secondary text-dark rounded py-2 px-6 cursor-pointer font-bold transition hover:brightness-110 text-sm">
+                <button className="secondary-button">
                     Reviews
                 </button>
             </div>

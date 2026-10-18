@@ -1,3 +1,4 @@
+import Events from "../HomeEvents/HomeEvents";
 import ProductCard from "../ProductCard/ProductCard";
 import { useEffect, useState } from "react";
 
@@ -12,7 +13,7 @@ function HomeContent() {
     }, []);
 
     return (
-        <div className="mx-1 md:mx-3">
+        <div className="mx-1 my-2 md:mx-3">
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {books.map((book) => (
@@ -25,6 +26,10 @@ function HomeContent() {
                         description={book.description}
                     />
                 ))}
+            </div>
+
+            <div>
+                <Events />
             </div>
         </div>
     )
