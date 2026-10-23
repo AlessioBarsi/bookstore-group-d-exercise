@@ -1,5 +1,4 @@
 import "dotenv/config";
-console.log("DEBUG URL:", process.env.DATABASE_URL ? process.env.DATABASE_URL.slice(0, 40) + "..." : "❌ UNDEFINED");
 import { db } from "./index.js";
 import { user, author, genre, book, favoriteBooks } from "./schema.js";
 
