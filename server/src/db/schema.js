@@ -1,10 +1,10 @@
-import { pgTable, uuid, text, timestamp, numeric, integer, date, unique } from "drizzle-orm/pg-core";
+import { pgTable, uuid, text, timestamp, numeric, integer, boolean, date, unique } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: uuid("id").primaryKey().defaultRandom(),
-  name: text("name"),
+  name: text("name").notNull(),
   email: text("email").notNull().unique(),
-  emailVerified: timestamp("email_verified", { mode: "date" }),
+  emailVerified: boolean("email_verified").notNull().default(false),
   image: text("image"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),

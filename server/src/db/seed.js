@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { auth } from "../auth/auth.js";
 import { db } from "./index.js";
 import { user, author, genre, book, favoriteBooks } from "./schema.js";
 
@@ -38,7 +39,13 @@ async function seed() {
   const books = await db.insert(book).values(bookRows).returning();
 
   // Insert users
-  const users = await db.insert(user).values(usersData).returning();
+  const users = [];
+  for (const u of usersData) {
+    const res = await auth.api.signUpEmail({
+      body: { name: u.name, email: u.email, password: "password123" },
+    });
+    users.push(res.user);
+  }
 
   // Insert some favorites
   await db.insert(favoriteBooks).values([
