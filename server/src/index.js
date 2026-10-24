@@ -14,6 +14,11 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 
 app.use(express.json());
 
+app.use("/api/favorites", favoritesRouter);
+
+app.use(notFound);
+app.use(errorHandler);
+
 app.get("/api/health", (req, res) => {
   res.json({ ok: true });
 });
