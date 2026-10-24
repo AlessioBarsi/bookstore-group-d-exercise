@@ -3,6 +3,11 @@ import express from "express";
 import cors from "cors";
 import { auth } from "./auth/auth.js";
 import { toNodeHandler, fromNodeHeaders } from "better-auth/node";
+import favoritesRouter from "./routes/favorites.js";
+import booksRouter from "./routes/books.js";
+import authorsRouter from "./routes/authors.js";
+import genresRouter from "./routes/genres.js";
+import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
@@ -15,6 +20,9 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json());
 
 app.use("/api/favorites", favoritesRouter);
+app.use("/api/books", booksRouter);
+app.use("/api/authors", authorsRouter);
+app.use("/api/genres", genresRouter);
 
 app.use(notFound);
 app.use(errorHandler);
