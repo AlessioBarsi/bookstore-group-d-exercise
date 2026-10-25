@@ -4,14 +4,14 @@ function Footer() {
             <div className="max-w-6xl mx-auto p-2 md:px-4 md:py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <div>
-                    <h3 className="text-secondary font-bold text-lg mb-2">The Quiet Page</h3>
+                    <h3 className="font-heading text-secondary font-bold text-xl mb-2">The Quiet Page</h3>
                     <p className="text-sm leading-relaxed">
                         Your local independent bookstore. Curating thoughtful stories and building a community of readers, one page at a time.
                     </p>
                 </div>
 
                 <div>
-                    <h3 className="text-secondary font-bold text-lg mb-2">Quick Links</h3>
+                    <h3 className="font-heading  text-secondary font-bold text-xl mb-2">Quick Links</h3>
                     <nav className="flex flex-col gap-1 text-sm">
                         <a href="/store" className="hover:text-secondary transition">Online Store</a>
                         <a href="/bookclub" className="hover:text-secondary transition">Book Club</a>
@@ -22,7 +22,7 @@ function Footer() {
                 </div>
 
                 <div>
-                    <h3 className="text-secondary font-bold text-lg mb-2">Visit Us</h3>
+                    <h3 className="font-heading text-secondary font-bold text-xl mb-2">Visit Us</h3>
                     <div className="text-sm flex flex-col gap-1">
                         <p>1518 Bookworm Lane</p>
                         <p>Mon - Sat: 10am - 8pm</p>

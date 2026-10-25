@@ -6,6 +6,8 @@
     --primary: rgb(118, 148, 82);
     --secondary: rgb(237, 199, 123);
     --dark: rgb(76, 69, 65);
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter Variable', system-ui, sans-serif;
 }
 
 @theme {
@@ -14,6 +16,14 @@
     --color-primary: var(--primary);
     --color-secondary: var(--secondary);
     --color-dark: var(--dark);
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter Variable', system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+  }
 }
 
 .nav-button,

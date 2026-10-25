@@ -24,7 +24,7 @@ function ProductCard({
                     className="h-75 w-full flex items-center justify-center text-dark/50 text-sm" /> 
             )}
 
-            <h3 className="font-bold text-ink text-lg leading-tight">{title}</h3>
+            <h3 className="font-heading text-2xl font-bold text-ink leading-tight">{title}</h3>
             <p className="italic text-dark text-sm">{author}</p>
             <p className="text-dark/70 text-xs">{publisher}</p>
 

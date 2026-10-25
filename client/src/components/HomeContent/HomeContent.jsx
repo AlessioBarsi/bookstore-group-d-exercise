@@ -28,7 +28,7 @@ function HomeContent() {
         <div className="mx-1 my-2 md:mx-3">
 
             <div className="flex justify-between items-start my-4">
-                <h2 className="text-3xl font-bold text-ink">
+                <h2 className="font-heading text-3xl font-bold text-ink">
                     <span className="text-primary">Bestsellers</span> This Season
                 </h2>
                 <button className="primary-button" onClick={() => { setIsOpen(!isOpen) }}>

@@ -12,7 +12,7 @@ function App() {
 
     <FavoritesProvider>
 
-      <div className='bg-bg min-h-screen flex flex-col'>
+      <div className='font-body bg-bg min-h-screen flex flex-col'>
         <Header />
         <main className='flex-1'>
           <Routes>

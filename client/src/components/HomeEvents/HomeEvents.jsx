@@ -6,13 +6,13 @@ function Events() {
 
             {/* Content */}
             <div className="relative z-10 max-w-6xl mx-auto px-4">
-                <h2 className="text-3xl font-bold text-bg text-center mb-8">This Month at The Quiet Page</h2>
+                <h2 className="font-heading text-4xl font-bold text-bg text-center mb-8">This Month at The Quiet Page</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     
                     {/* Book Club Card */}
                     <div className="bg-bg/90 rounded-lg p-6 text-center flex flex-col items-center gap-3">
-                        <h3 className="text-xl font-bold text-ink">Monthly Book Club</h3>
+                        <h3 className="font-heading text-2xl font-bold text-ink">Monthly Book Club</h3>
                         <p className="text-ink/80">
                             Currently reading: <span className="italic font-bold text-primary">Dracula</span> (1897) by Bram Stoker
                         </p>
@@ -22,7 +22,7 @@ function Events() {
 
                     {/* Author Meetup Card */}
                     <div className="bg-bg/90 rounded-lg p-6 text-center flex flex-col items-center gap-3">
-                        <h3 className="text-xl font-bold text-ink">Author Meetup</h3>
+                        <h3 className="font-heading text-2xl font-bold text-ink">Author Meetup</h3>
                         <p className="text-ink/80">
                             Meet local author <span className="italic font-bold text-primary">Sarah Mitchell</span> for a reading and Q&A session
                         </p>

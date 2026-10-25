@@ -15,7 +15,7 @@ function Hero() {
 
         {/* Content */}
         <div className="relative flex flex-col items-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-ink mb-1">
+          <h1 className="font-heading text-4xl md:text-6xl font-bold text-ink mb-1">
             The <span className="text-primary">Quiet</span> Page
           </h1>
           <div className="italic md:text-2xl font-bold text-dark mb-1">Independent Bookstore</div>
@@ -25,7 +25,7 @@ function Hero() {
             <button className="primary-button">Online Store</button>
             <button className="secondary-button">Discover our Events</button>
           </div>
-          <div className="text-ink md:text-xl font-bold text-sm">Come visit us at 1518 Bookworm Lane</div>
+          <div className="font-heading text-ink md:text-xl font-bold text-sm">Come visit us at 1518 Bookworm Lane</div>
         </div>
       </div>
 
