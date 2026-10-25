@@ -2,6 +2,7 @@ import FavoriteButton from "../FavoriteButton/FavoriteButton";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function ProductCard({
+    id,
     image,
     title,
     author,
@@ -38,7 +39,7 @@ function ProductCard({
                 <button className="secondary-button">
                     Reviews
                 </button>
-                <FavoriteButton />
+                <FavoriteButton bookId={id} />
             </div>
 
         </div>

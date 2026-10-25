@@ -50,6 +50,9 @@ function Login() {
             <button type="submit" className="primary-button" disabled={loading}>
                 {loading ? "Logging in..." : "Log in"}
             </button>
+            <button className="secondary-button" onClick={() => navigate("/register")}>
+              Don't have an account? Sign up
+            </button>
         </form>
     );
 }

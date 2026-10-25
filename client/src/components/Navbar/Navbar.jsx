@@ -59,7 +59,7 @@ function Navbar() {
                         (<NavbarButton title="Logout" link="logout" />) :
                         (<NavbarButton title="Login" link="login" />)
                 )}
-                <div className="text-primary text-2xl mx-2 mb-1 truncate font-bold max-w-28">{session?.user.name}</div>
+                <div className="text-primary text-2xl mx-2 mb-1 font-bold max-w-28">{session?.user.name}</div>
             </div>
         </div>
     )

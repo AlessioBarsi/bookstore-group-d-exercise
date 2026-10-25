@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 function HomeContent() {
     const [books, setBooks] = useState([]);
+    const [favorites, setFavorites] = useState([]);
     const [options, setOptions] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [filter, setFilter] = useState('all');
@@ -65,6 +66,7 @@ function HomeContent() {
                     .map((book) => (
                         <ProductCard
                             key={book.id}
+                            id={book.id}
                             image={book.cover}
                             title={book.title}
                             author={book.author.name}

@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { authClient } from "../../lib/auth-client";
+import { useFavorites } from "../../context/FavoriteContext";
 
-function FavoriteButton() {
-    const [isFavorite, setFavorite] = useState(false);
+function FavoriteButton({ bookId }) {
+    const { data: session } = authClient.useSession();
+    const { favoriteIds, toggleFavorite } = useFavorites();
+
+    const isFavorite = favoriteIds.has(bookId);
+
+    function handleClick() {
+        if (!session) {
+            alert("You need to login to add this book to your favorites")
+            return;
+        }
+        toggleFavorite(bookId);
+    }
+
     return (
         <div>
             <button
-                onClick={() => setFavorite(!isFavorite)}
+                onClick={handleClick}
                 className="text-red-500 cursor-pointer transition-transform hover:scale-110 mt-1"
-                aria-label="Add to favorites"
+                aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+                aria-pressed={isFavorite}
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +35,7 @@ function FavoriteButton() {
                 </svg>
             </button>
         </div>
-    )
+    );
 }
 
 export default FavoriteButton;
