@@ -1,3 +1,4 @@
+import AuthStatus from "../AuthStatus/AuthStatus";
 import Navbar from "../Navbar/Navbar";
 
 function Header() {
@@ -8,6 +9,7 @@ function Header() {
                 <div className="italic">Independent Bookstore</div>
             </div>
             <Navbar />
+            <AuthStatus />
         </div>
     )
 }
