@@ -1,16 +1,16 @@
 import Events from "../HomeEvents/HomeEvents";
 import ProductCard from "../ProductCard/ProductCard";
 import { useEffect, useState } from "react";
+import { API_URL } from "../../lib/config";
 
 function HomeContent() {
     const [books, setBooks] = useState([]);
-    const [favorites, setFavorites] = useState([]);
     const [options, setOptions] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [filter, setFilter] = useState('all');
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/api/books`)
+        fetch(`${API_URL}/api/books`)
             .then((response) => {
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 return response.json();
