@@ -9,15 +9,15 @@ function HomeContent() {
     const [filter, setFilter] = useState('all');
 
     useEffect(() => {
-        fetch('/data/books.json')
-            .then((response) => response.json())
+        fetch(`${import.meta.env.VITE_API_URL}/api/books`)
+            .then((response) => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+            })
             .then((data) => {
                 setBooks(data);
 
-                // Extract unique categories using Set
-                const categories = [...new Set(data.map(book => book.category))];
-
-                // Add "All" at the beginning
+                const categories = [...new Set(data.map((book) => book.genre.name))];
                 setOptions(['all', ...categories]);
             })
             .catch((error) => console.error('Error loading books:', error));
@@ -59,16 +59,15 @@ function HomeContent() {
                     </div>
                 )}
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {books
-                    .filter((book) => filter === 'all' || book.category === filter)
+                    .filter((book) => filter === 'all' || book.genre.name === filter)
                     .map((book) => (
                         <ProductCard
-                            key={book.title}
-                            image={book.image}
+                            key={book.id}
+                            image={book.cover}
                             title={book.title}
-                            author={book.author}
+                            author={book.author.name}
                             publisher={book.publisher}
                             description={book.description}
                         />

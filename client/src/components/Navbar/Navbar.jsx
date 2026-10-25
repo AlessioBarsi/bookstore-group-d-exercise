@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import NavbarButton from "../NavbarButton/NavbarButton";
 import { useState } from "react";
 
@@ -38,18 +39,18 @@ function Navbar() {
                 ${isOpen ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'}
             `}>
                 {links.map(element => (
-                    <a key={element.name} href={element.href} className="nav-button text-center">
+                    <Link key={element.name} to={element.href} className="nav-button text-center">
                         {element.name}
-                    </a>
+                    </Link>
                 ))}
             </div>
 
             {/* Desktop navbar */}
             <div className="hidden md:flex justify-between gap-1">
                 {links.map(element => (
-                    <a key={element.name} href={element.href} className="nav-button text-center">
+                    <Link key={element.name} href={element.href} className="nav-button text-center">
                         {element.name}
-                    </a>
+                    </Link>
                 ))}
             </div>
         </div>

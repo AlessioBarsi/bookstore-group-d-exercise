@@ -1,8 +1,10 @@
+import { Link } from "react-router";
+
 function NavbarButton ({title, link}) {
     return (
-        <a className="nav-button" href={`/${link}`} as="button">
+        <Link className="nav-button" to={`/${link}`} as="button">
             {title}
-        </a>
+        </Link>
     )
 }
 

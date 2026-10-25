@@ -34,6 +34,8 @@ async function seed() {
     authorId: authorMap[b.authorName],
     genreId: genreMap[b.genreName],
     price: b.price,
+    cover: b.cover,
+    publisher: b.publisher,
     publishYear: b.publishYear,
   }));
   const books = await db.insert(book).values(bookRows).returning();
