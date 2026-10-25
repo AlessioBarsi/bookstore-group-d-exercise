@@ -1,4 +1,5 @@
 import "dotenv/config";
+import path from "node:path";
 import express from "express";
 import cors from "cors";
 import { auth } from "./auth/auth.js";
@@ -10,22 +11,16 @@ import genresRouter from "./routes/genres.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
-app.use("/uploads", express.static("uploads"));
+app.use(cors({ origin: CLIENT_URL, credentials: true }));
+app.use("/uploads", express.static(path.join(import.meta.dirname, "..", "uploads")));
 
 // Better Auth handler: must come BEFORE express.json()
 app.all("/api/auth/*splat", toNodeHandler(auth));
 
 app.use(express.json());
-
-app.use("/api/favorites", favoritesRouter);
-app.use("/api/books", booksRouter);
-app.use("/api/authors", authorsRouter);
-app.use("/api/genres", genresRouter);
-
-app.use(notFound);
-app.use(errorHandler);
 
 app.get("/api/health", (req, res) => {
   res.json({ ok: true });
@@ -39,5 +34,12 @@ app.get("/api/me", async (req, res) => {
   res.json(session);
 });
 
+app.use("/api/favorites", favoritesRouter);
+app.use("/api/books", booksRouter);
+app.use("/api/authors", authorsRouter);
+app.use("/api/genres", genresRouter);
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+app.use(notFound);
+app.use(errorHandler);
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
