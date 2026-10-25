@@ -25,7 +25,7 @@ function Login() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-sm mx-auto my-10 flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="px-2 max-w-sm mx-auto my-10 flex flex-col gap-3">
             <h1 className="text-2xl font-bold text-ink">Log in</h1>
 
             <input

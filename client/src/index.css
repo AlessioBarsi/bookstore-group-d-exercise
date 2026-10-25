@@ -18,7 +18,8 @@
 
 .nav-button,
 .hamburger-button,
-.hero-button {
+.hero-button,
+.logout-button {
     @apply bg-dark text-secondary px-2 py-1 font-bold rounded cursor-pointer hover:brightness-110 transition;
 }
 

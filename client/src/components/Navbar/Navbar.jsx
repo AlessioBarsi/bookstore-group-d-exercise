@@ -1,25 +1,26 @@
-import { Link } from "react-router";
 import NavbarButton from "../NavbarButton/NavbarButton";
 import { useState } from "react";
+import { authClient } from "../../lib/auth-client";
 
 function Navbar() {
+    const { data: session, isPending } = authClient.useSession();
+
     const links = [
         { name: 'Home', href: '/' },
-        { name: 'Store', href: '/store' },
-        { name: 'Search', href: '/search' },
-        { name: 'Cart', href: '/cart' },
-        { name: 'Book Club', href: '/bookclub' },
-        { name: 'Events', href: '/events' },
-        { name: 'About', href: '/about' },
-        { name: 'Contact', href: '/contact' },
+        { name: 'Store', href: 'store' },
+        { name: 'Cart', href: 'cart' },
+        { name: 'Book Club', href: 'bookclub' },
+        { name: 'Events', href: 'events' },
+        { name: 'About', href: 'about' },
+        { name: 'Contact', href: 'contact' },
     ];
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div>
             {/* Mobile only navbar with hamburger menu */}
-            <div className="md:hidden flex justify-end">
-                <button className="hamburger-button mb-1" onClick={() => setIsOpen(!isOpen)}>
+            <div className="md:hidden flex gap-2 items-center justify-end">
+                <div className="text-primary font-bold truncate max-w-28">{session?.user.name}</div>                <button className="hamburger-button mb-1" onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? (
                         <div className="px-1">X</div>
                     ) : (
@@ -39,19 +40,26 @@ function Navbar() {
                 ${isOpen ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'}
             `}>
                 {links.map(element => (
-                    <Link key={element.name} to={element.href} className="nav-button text-center">
-                        {element.name}
-                    </Link>
+                    <NavbarButton key={element.name} title={element.name} link={element.href} />
                 ))}
+                {!isPending && (
+                    session ?
+                        (<NavbarButton title="Logout" link="logout" />) :
+                        (<NavbarButton title="Login" link="login" />)
+                )}
             </div>
 
             {/* Desktop navbar */}
-            <div className="hidden md:flex justify-between gap-1">
+            <div className="hidden md:flex items-center justify-between gap-1 mx-2">
                 {links.map(element => (
-                    <Link key={element.name} href={element.href} className="nav-button text-center">
-                        {element.name}
-                    </Link>
+                    <NavbarButton key={element.name} title={element.name} link={element.href} />
                 ))}
+                {!isPending && (
+                    session ?
+                        (<NavbarButton title="Logout" link="logout" />) :
+                        (<NavbarButton title="Login" link="login" />)
+                )}
+                <div className="text-primary text-2xl mx-2 mb-1 truncate font-bold max-w-28">{session?.user.name}</div>
             </div>
         </div>
     )

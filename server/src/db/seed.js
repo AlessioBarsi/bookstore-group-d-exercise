@@ -1,5 +1,4 @@
 import "dotenv/config";
-import { auth } from "../auth/auth.js";
 import { db } from "./index.js";
 import { user, author, genre, book, favoriteBooks } from "./schema.js";
 
@@ -7,8 +6,10 @@ import genresData from "./seed-data/genres.json" with { type: "json" };
 import authorsData from "./seed-data/authors.json" with { type: "json" };
 import booksData from "./seed-data/books.json" with { type: "json" };
 import usersData from "./seed-data/users.json" with { type: "json" };
+import { insertUsers, promptPassword } from "./seed-helpers.js";
 
 async function seed() {
+  const password = await promptPassword(usersData[0].email);
   console.log("Seeding database...");
 
   await db.delete(favoriteBooks);
@@ -41,13 +42,7 @@ async function seed() {
   const books = await db.insert(book).values(bookRows).returning();
 
   // Insert users
-  const users = [];
-  for (const u of usersData) {
-    const res = await auth.api.signUpEmail({
-      body: { name: u.name, email: u.email, password: "password123" },
-    });
-    users.push(res.user);
-  }
+  const users = await insertUsers(usersData, password);
 
   // Insert some favorites
   await db.insert(favoriteBooks).values([

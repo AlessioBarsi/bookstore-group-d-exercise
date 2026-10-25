@@ -3,6 +3,7 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
 import { Routes, Route } from "react-router";
 import Login from './pages/Login';
+import Logout from './pages/Logout';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </main>
       <Footer />
