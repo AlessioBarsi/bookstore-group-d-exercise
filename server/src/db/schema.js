@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, timestamp, numeric, integer, boolean, date, unique } from "drizzle-orm/pg-core";
+import { pgTable, pgEnum, uuid, text, timestamp, numeric, integer, boolean, unique } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -96,3 +96,47 @@ export const favoriteBooks = pgTable("favorite_books", {
 }, (table) => ({
   userBookUnique: unique().on(table.userId, table.bookId)
 }));
+
+// Tables for stripe payment processing
+
+export const orderStatus = pgEnum("order_status", [
+  "pending",
+  "paid",
+  "failed",
+  "expired",
+  "refunded",
+]);
+
+export const orders = pgTable("orders", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "restrict" }),
+  status: orderStatus("status").notNull().default("pending"),
+  totalAmount: integer("total_amount").notNull(), // in cents
+  currency: text("currency").notNull().default("eur"),
+  stripeCheckoutSessionId: text("stripe_checkout_session_id").unique(),
+  stripePaymentIntentId: text("stripe_payment_intent_id"),
+  paidAt: timestamp("paid_at"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const orderItems = pgTable("order_items", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  orderId: uuid("order_id")
+    .notNull()
+    .references(() => orders.id, { onDelete: "cascade" }),
+  bookId: uuid("book_id").references(() => book.id, { onDelete: "set null" }),
+  title: text("title").notNull(), // snapshot at purchase time
+  unitAmount: integer("unit_amount").notNull(), // cents, snapshot at purchase time
+  quantity: integer("quantity").notNull().default(1),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+// Optional: for webhook idempotency
+export const stripeEvent = pgTable("stripe_event", {
+  id: text("id").primaryKey(), // Stripe event id (evt_...)
+  type: text("type").notNull(),
+  processedAt: timestamp("processed_at").notNull().defaultNow(),
+});
