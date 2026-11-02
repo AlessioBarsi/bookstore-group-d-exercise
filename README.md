@@ -9,6 +9,7 @@ A full-stack web app for an independent bookstore. The frontend is built with Re
 - Book grid loaded from the API, with a genre filter dropdown
 - Registration, login and logout with email and password
 - Favorite button (heart toggle) saved per user in the database
+- Stripe integration for payment processing
 - Events section with book club and author meetup cards
 - Footer with quick links, store info, and copyright
 
@@ -44,6 +45,8 @@ DATABASE_URL=<your Neon connection string>
 BETTER_AUTH_SECRET=<generate with: openssl rand -base64 32>
 BETTER_AUTH_URL=http://localhost:3000
 CLIENT_URL=http://localhost:5173
+STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxx
+STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxx
 ```
 
 Then create the tables, seed them, and start the server:
@@ -117,7 +120,3 @@ server/
     ├── routes/           # books, authors, genres, favorites
     └── index.js
 ```
-
-## Deployment
-
-The server runs on Render (build: `npm install`, start: `npm start`) with a Neon database. On the free plan the server sleeps after 15 minutes idle, so the first request after a quiet period can take about a minute. Set the same environment variables as above in the host's dashboard, using the deployed URLs.
