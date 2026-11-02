@@ -8,6 +8,8 @@ import favoritesRouter from "./routes/favorites.js";
 import booksRouter from "./routes/books.js";
 import authorsRouter from "./routes/authors.js";
 import genresRouter from "./routes/genres.js";
+import checkoutRouter from "./routes/checkout.js";
+import webhooksRouter from "./routes/webhook.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
@@ -19,6 +21,8 @@ app.use("/uploads", express.static(path.join(import.meta.dirname, "..", "uploads
 
 // Better Auth handler: must come BEFORE express.json()
 app.all("/api/auth/*splat", toNodeHandler(auth));
+
+app.use("/api/webhooks", webhooksRouter);
 
 app.use(express.json());
 
@@ -34,6 +38,7 @@ app.get("/api/me", async (req, res) => {
   res.json(session);
 });
 
+app.use("/api/checkout", checkoutRouter);
 app.use("/api/favorites", favoritesRouter);
 app.use("/api/books", booksRouter);
 app.use("/api/authors", authorsRouter);

@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Register from './pages/Register';
 import { FavoritesProvider } from './context/FavoriteContext';
+import CheckoutCancel from './pages/CheckoutCancel';
+import CheckoutSuccess from './pages/CheckoutSuccess';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/checkout/success" element={<CheckoutSuccess />} />
+            <Route path="/checkout/cancel" element={<CheckoutCancel />} />
           </Routes>
         </main>
         <Footer />

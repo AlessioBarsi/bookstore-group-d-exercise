@@ -72,6 +72,7 @@ function HomeContent() {
                             author={book.author.name}
                             publisher={book.publisher}
                             description={book.description}
+                            price={book.price}
                         />
                     ))
                 }

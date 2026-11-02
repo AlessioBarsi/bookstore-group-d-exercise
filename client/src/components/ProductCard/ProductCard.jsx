@@ -7,7 +7,8 @@ function ProductCard({
     title,
     author,
     publisher,
-    description
+    description,
+    price
 }) {
     return (
         <div className="bg-primary/30 rounded-lg border-2 border-secondary p-2 flex flex-col items-center text-center gap-2">
@@ -19,9 +20,9 @@ function ProductCard({
                     className="max-w-full h-75 object-contain rounded mb-1"
                 />
             ) : (
-                <img 
+                <img
                     src="/images/default-cover.png"
-                    className="h-75 w-full flex items-center justify-center text-dark/50 text-sm" /> 
+                    className="h-75 w-full flex items-center justify-center text-dark/50 text-sm" />
             )}
 
             <h3 className="font-heading text-2xl font-bold text-ink leading-tight">{title}</h3>
@@ -40,6 +41,20 @@ function ProductCard({
                     Reviews
                 </button>
                 <FavoriteButton bookId={id} />
+                <button className="primary-button"
+                    onClick={async () => {
+                        const res = await fetch("http://localhost:3000/api/checkout", {
+                            method: "POST",
+                            credentials: "include",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ items: [{ bookId: id, quantity: 1 }] }),
+                        });
+                        const data = await res.json();
+                        if (data.url) window.location.href = data.url;
+                    }}
+                >
+                    Buy now {price}
+                </button>
             </div>
 
         </div>
